@@ -113,10 +113,12 @@ struct thread
 
     /* Shared between thread.c and synch.c. */
     struct list_elem elem;              /* List element. */
-
+    struct dir* curr_dir; // Add by Thuong.pt
 #ifdef USERPROG
     /* Owned by userprog/process.c. */
     uint32_t *pagedir;                  /* Page directory. */
+    struct file* fd_list[128]; /* Unique Thread file list. */
+    struct file* curr_file; /* Current file that is deny_write */
 
 #endif
     /* Our implementation for struct thread to store useful information */

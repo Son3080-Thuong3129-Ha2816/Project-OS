@@ -49,6 +49,7 @@ shutdown (void)
 void
 shutdown_configure (enum shutdown_type type)
 {
+  // timer_sleep(1000);
   how = type;
 }
 

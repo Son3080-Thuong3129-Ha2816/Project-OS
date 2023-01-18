@@ -1,5 +1,6 @@
 #include "threads/init.h"
 #include <console.h>
+// #include <unistd.h>
 #include <debug.h>
 #include <inttypes.h>
 #include <limits.h>
@@ -133,7 +134,8 @@ main (void)
   run_actions (argv);
 
   /* Finish up. */
-  shutdown ();
+  timer_msleep(3000);
+  shutdown_power_off ();
   thread_exit ();
 }
 
@@ -236,8 +238,10 @@ parse_options (char **argv)
       
       if (!strcmp (name, "-h"))
         usage ();
-      else if (!strcmp (name, "-q"))
+      else if (!strcmp (name, "-q")){
+        // shutdown();
         shutdown_configure (SHUTDOWN_POWER_OFF);
+      }
       else if (!strcmp (name, "-r"))
         shutdown_configure (SHUTDOWN_REBOOT);
 #ifdef FILESYS

@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "*.inc": "c"
+        "*.inc": "c",
+        "limits.h": "c",
+        "unistd.h": "c"
     }
 }
