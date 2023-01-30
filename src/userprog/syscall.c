@@ -33,7 +33,6 @@ bool readdir(int fd, char *name);
 bool isdir(int fd);
 int inumber(int fd);
 /*
-  Driver: All of Us 
   Changes the current working directory of the process to dir, which may be 
   relative or absolute. Returns true if successful, false on failure. 
 */
@@ -64,7 +63,6 @@ bool chdir(const char* dir) {
   That is, mkdir("/a/b/c") succeeds only if "/a/b" already exists and 
   "/a/b/c" does not. 
 */
-// Driver: Michael and Joel
 bool mkdir(const char* dir) {
   if(strlen(dir) == 0){
     return false;
@@ -126,7 +124,6 @@ bool mkdir(const char* dir) {
     return true;
   }
   
-  // Otherwise check that the target directory exists
   char *prev_name = calloc(1, strlen(dir) + 1);
   strlcpy(prev_name, dir, index);
   target = handle_rel_abs_dir(prev_name);
@@ -174,7 +171,6 @@ bool mkdir(const char* dir) {
   supports longer file names than the basic file system, you should increase 
   this value from the default of 14.
 */
-// Driver: Ashley
 bool readdir(int fd, char *name) {
   struct file * curr_file = thread_current()->fd_list[fd];
    // Error checking
@@ -211,7 +207,6 @@ bool readdir(int fd, char *name) {
   Returns true if fd represents a directory, false if 
   it represents an ordinary file. 
 */
-// Driver: Ashley
 bool isdir(int fd) {
   struct file * curr_file = thread_current()->fd_list[fd];
   // Error checking
@@ -231,7 +226,6 @@ bool isdir(int fd) {
   unique during the file's existence. In Pintos, the sector number of 
   the inode is suitable for use as an inode number.
 */
-// Driver: Joel
 int inumber(int fd) {
   struct file * curr_file = thread_current()->fd_list[fd];
   // Error checking
